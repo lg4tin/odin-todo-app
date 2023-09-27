@@ -26,11 +26,20 @@ img {
 
 .sidebar {
   background-color: rgb(221, 221, 221);
-
+  padding: 40px 150px 20px 70px;
+  height: 800px;
 }
 
 .sidebar div {
   display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.sidebar div:hover {
+  background-color: white;
 }
 
 .main {
@@ -41,4 +50,8 @@ img {
 .todo-list-container {
   padding-left: 50px;
   padding-top: 50px;
+}
+
+.cross-off {
+  text-decoration: line-through;
 }

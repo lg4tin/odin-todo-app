@@ -1,1 +1,1 @@
-console.log("hi");
+(()=>{"use strict";const e=document.querySelector(".todo-list");let t=new class{constructor(e,t){this.title=e,this.description=t}}("Make Dinner","Make tacos");document.querySelector(".add-todo").addEventListener("click",(function(){let c=document.createElement("div");c.textContent=`${t.title}, ${t.description}`;let n=document.createElement("input");n.type="checkbox",c.appendChild(n),c.addEventListener("click",(()=>{c.classList.toggle("cross-off"),n.setAttribute("checked")})),e.appendChild(c)}))})();
