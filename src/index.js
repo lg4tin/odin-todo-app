@@ -1,5 +1,7 @@
 import { addTodo } from './DOM.js';
 
+const todoArray = [];
+
 const addTodoBtn = document.querySelector('.add-todo');
 addTodoBtn.addEventListener('click', addTodo);
 
@@ -14,3 +16,6 @@ openButton.addEventListener('click', () => {
 closeButton.addEventListener('click', () => {
   modal.close();
 })
+
+const submitButton = document.querySelector('.submit-button');
+submitButton.addEventListener('click', addTodo);

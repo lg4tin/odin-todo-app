@@ -60,12 +60,24 @@ img {
   padding-top: 50px;
 }
 
-.cross-off {
-  text-decoration: line-through;
+.todo-list div {
+  border-bottom: 1px solid black;
+  
+  
 }
 
-.done {
-  margin-top: 200px;
+.cross-off {
   text-decoration: line-through;
   text-decoration-thickness: 3px;
+}
+
+dialog div {
+  display: flex;
+  gap: 20px;
+}
+
+.modal-right,
+.modal-left {
+  display: flex;
+  flex-direction: column;
 }
