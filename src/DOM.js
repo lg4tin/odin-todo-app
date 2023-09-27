@@ -1,4 +1,5 @@
 const todoList = document.querySelector('.todo-list');
+const doneList = document.querySelector('.done');
 
 export function addTodo() {
   let newTodo = document.createElement('div');
@@ -6,11 +7,14 @@ export function addTodo() {
   let checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   newTodo.appendChild(checkbox);
-  newTodo.addEventListener('click', () => {
-    newTodo.classList.toggle('cross-off');
-    checkbox.setAttribute('checked');
-  });
   todoList.appendChild(newTodo);
+  newTodo.addEventListener('click', () => {
+    newTodo.remove();
+    doneList.appendChild(newTodo);
+    //newTodo.classList.toggle('cross-off');
+    //checkbox.setAttribute('checked');
+    //set timeout remove todo
+  });
 }
 
 class Todo {

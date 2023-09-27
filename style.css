@@ -11,6 +11,14 @@ header {
   padding: 10px 50px;
 }
 
+button[data-open-modal] {
+  color: white;
+  border: none;
+  background-color: rgb(255, 100, 100);
+  font-size: 30px;
+  cursor: pointer;
+}
+
 img {
   height: 30px;
   width: 30px;
@@ -54,4 +62,10 @@ img {
 
 .cross-off {
   text-decoration: line-through;
+}
+
+.done {
+  margin-top: 200px;
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
 }

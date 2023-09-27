@@ -14,10 +14,18 @@
     </div>
     
     <div class="header-right">
+      <button data-open-modal>+</button>
       <img src="../eye-plus-outline.svg" alt="add-todo" class="add-todo">
       <div>Todo List</div>
     </div>
   </header>
+
+  
+  <dialog data-modal>
+    <div>This is a modal</div>
+    <input type="text">
+    <button data-close-modal>Close</button>
+  </dialog>
 
   <div class="main">
     <div class="sidebar">
@@ -36,6 +44,7 @@
     <div class="todo-list-container">
       <h1>Today</h1>
       <div class="todo-list"></div>
+      <div class="done"></div>
     </div>
   </div>
   
