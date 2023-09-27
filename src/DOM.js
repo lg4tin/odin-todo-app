@@ -1,25 +1,7 @@
-import { todoArray } from "./index.js";
+import { todoArray, modal } from "./index.js";
 
 const todoList = document.querySelector('.todo-list');
 const doneList = document.querySelector('.done');
-
-export function addTodo() {
-  let newTodo = document.createElement('div');
-  newTodo.textContent = `${title.value}`;
-  let checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
-  checkbox.addEventListener('click', () => {
-    newTodo.remove();
-  })
-  newTodo.appendChild(checkbox);
-  todoList.appendChild(newTodo);
-  newTodo.addEventListener('click', () => {
-    newTodo.classList.toggle('cross-off');
-  });
-  newTodo.addEventListener('click', () => {
-    //doneList.textContent = todoArray;
-  })
-}
 
 class Todo {
   constructor(title, description, date, priority, project) {
@@ -46,10 +28,6 @@ export function addTodoToArray() {
 }
 
 
-
-////////////
-
-
 export function displayTodos() {
   todoList.innerHTML = '';
   for (let i in todoArray) {
@@ -61,6 +39,7 @@ export function displayTodos() {
       newTodo.remove();
       todoArray.splice(i, 1);
       displayTodos();
+      //modal.close();
       console.log(todoArray);
     })
     newTodo.appendChild(checkbox);
@@ -69,7 +48,9 @@ export function displayTodos() {
       newTodo.classList.toggle('cross-off');
     });
     newTodo.addEventListener('click', () => {
-      //doneList.textContent = todoArray;
+      let div = document.createElement('div');
+      div.textContent = todoArray[i].description;
+      newTodo.appendChild(div);
     })
   }
 }

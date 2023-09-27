@@ -1,13 +1,10 @@
-import { addTodo, addTodoToArray, displayTodos } from './DOM.js';
+import { addTodoToArray, displayTodos } from './DOM.js';
 
 export const todoArray = [];
 
-const addTodoBtn = document.querySelector('.add-todo');
-addTodoBtn.addEventListener('click', addTodo);
-
 const openButton = document.querySelector('[data-open-modal]');
 const closeButton = document.querySelector('[data-close-modal]');
-const modal = document.querySelector('[data-modal]');
+export const modal = document.querySelector('[data-modal]');
 
 openButton.addEventListener('click', () => {
   modal.showModal();
