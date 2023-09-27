@@ -1,7 +1,6 @@
-import { todoArray, modal } from "./index.js";
+import { todoArray } from "./index.js";
 
 const todoList = document.querySelector('.todo-list');
-const doneList = document.querySelector('.done');
 
 class Todo {
   constructor(title, description, date, priority, project) {
@@ -12,8 +11,6 @@ class Todo {
     this.project = project;
   }
 }
-
-let user = new Todo('Make Dinner', 'Make tacos', 'hi', 'hi', 'hi');
 
 const title = document.querySelector('#title');
 const des = document.querySelector('#description');
@@ -27,7 +24,6 @@ export function addTodoToArray() {
   console.log(todoArray);
 }
 
-
 export function displayTodos() {
   todoList.innerHTML = '';
   for (let i in todoArray) {
@@ -39,7 +35,6 @@ export function displayTodos() {
       newTodo.remove();
       todoArray.splice(i, 1);
       displayTodos();
-      //modal.close();
       console.log(todoArray);
     })
     newTodo.appendChild(checkbox);
@@ -53,4 +48,26 @@ export function displayTodos() {
       newTodo.appendChild(div);
     })
   }
+}
+
+
+export function displayAllTasks() {
+  let header = document.querySelector('.todo-list-header');
+  header.textContent = 'All Tasks';
+  displayTodos();
+}
+
+export function displayTodaysTasks() {
+  let header = document.querySelector('.todo-list-header');
+  header.textContent = 'Today';
+  /*for (let i in todoArray) {
+    if (todoArray[i].date == todoArray.getDate()) {
+
+    }
+  }*/
+}
+
+export function displaythisWeeksTasks() {
+  let header = document.querySelector('.todo-list-header');
+  header.textContent = 'This Weeks Tasks';
 }

@@ -1,4 +1,4 @@
-import { addTodoToArray, displayTodos } from './DOM.js';
+import { addTodoToArray, displayAllTasks, displayTodaysTasks, displaythisWeeksTasks } from './DOM.js';
 
 export const todoArray = [];
 
@@ -17,3 +17,12 @@ closeButton.addEventListener('click', () => {
 const submitButton = document.querySelector('.submit-button');
 //submitButton.addEventListener('click', displayTodos);
 submitButton.addEventListener('click', addTodoToArray);
+
+const allTasksButton = document.querySelector('.all-tasks');
+allTasksButton.addEventListener('click', displayAllTasks);
+
+const todayButton = document.querySelector('.today');
+todayButton.addEventListener('click', displayTodaysTasks);
+
+const thisWeekButton = document.querySelector('.this-week');
+thisWeekButton.addEventListener('click', displaythisWeeksTasks);
