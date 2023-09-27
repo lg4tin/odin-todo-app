@@ -1,3 +1,5 @@
+import { todoArray } from "./index.js";
+
 const todoList = document.querySelector('.todo-list');
 const doneList = document.querySelector('.done');
 
@@ -6,18 +8,16 @@ export function addTodo() {
   newTodo.textContent = `${title.value}`;
   let checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
+  checkbox.addEventListener('click', () => {
+    newTodo.remove();
+  })
   newTodo.appendChild(checkbox);
   todoList.appendChild(newTodo);
   newTodo.addEventListener('click', () => {
-    //newTodo.remove();
-    //doneList.appendChild(newTodo);
     newTodo.classList.toggle('cross-off');
   });
   newTodo.addEventListener('click', () => {
-    let div = document.createElement('div');
-    div.textContent = des.value;
-    div.style = 'text-decoration: none;';
-    newTodo.appendChild(div);
+    //doneList.textContent = todoArray;
   })
 }
 
@@ -39,6 +39,37 @@ const date = document.querySelector('#date');
 const priority = document.querySelector('#priority');
 const project = document.querySelector('#project');
 
-export function getTodo() {
-  alert(title.value);
+export function addTodoToArray() {
+  todoArray.push(new Todo(title.value, des.value, date.value, priority.value, project.value));
+  displayTodos();
+  console.log(todoArray);
+}
+
+
+
+////////////
+
+
+export function displayTodos() {
+  todoList.innerHTML = '';
+  for (let i in todoArray) {
+    let newTodo = document.createElement('div');
+    newTodo.textContent = `${todoArray[i].title}`;
+    let checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.addEventListener('click', () => {
+      newTodo.remove();
+      todoArray.splice(i, 1);
+      displayTodos();
+      console.log(todoArray);
+    })
+    newTodo.appendChild(checkbox);
+    todoList.appendChild(newTodo);
+    newTodo.addEventListener('click', () => {
+      newTodo.classList.toggle('cross-off');
+    });
+    newTodo.addEventListener('click', () => {
+      //doneList.textContent = todoArray;
+    })
+  }
 }

@@ -1,6 +1,6 @@
-import { addTodo } from './DOM.js';
+import { addTodo, addTodoToArray, displayTodos } from './DOM.js';
 
-const todoArray = [];
+export const todoArray = [];
 
 const addTodoBtn = document.querySelector('.add-todo');
 addTodoBtn.addEventListener('click', addTodo);
@@ -18,4 +18,5 @@ closeButton.addEventListener('click', () => {
 })
 
 const submitButton = document.querySelector('.submit-button');
-submitButton.addEventListener('click', addTodo);
+//submitButton.addEventListener('click', displayTodos);
+submitButton.addEventListener('click', addTodoToArray);
