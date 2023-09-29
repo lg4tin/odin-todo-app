@@ -38,18 +38,44 @@ export function displayTodos() {
       console.log(todoArray);
     })
     newTodo.appendChild(checkbox);
+
+    //addTooltip('tooltip');
+
     todoList.appendChild(newTodo);
     newTodo.addEventListener('click', () => {
       newTodo.classList.toggle('cross-off');
     });
+
     newTodo.addEventListener('click', () => {
-      let div = document.createElement('div');
-      div.textContent = todoArray[i].description;
-      newTodo.appendChild(div);
+      const description = document.querySelector('.done');
+      document.querySelector('#one').textContent = 'Title: ' + todoArray[i].title;
+      document.querySelector('#two').textContent = 'Description: ' + todoArray[i].description;
+      document.querySelector('#three').textContent = 'Date: ' + todoArray[i].date;
+      document.querySelector('#four').textContent = 'Priority: ' + todoArray[i].priority;
+      document.querySelector('#five').textContent = 'Project: ' + todoArray[i].project;
     })
+    
   }
 }
+/*
+function addTooltip(name) {
+  let name = document.createElement('span');
+  name.textContent = 'This is my tooltip';
+  name.classList.add('tooltip');
+  newTodo.addEventListener("mouseover", showTooltip);
+  newTodo.addEventListener("mouseout", hideTooltip);
+  newTodo.appendChild(tooltip);
+}
 
+function showTooltip() {
+  const tooltip = document.querySelectorAll(".tooltip");
+  tooltip.style.display = "block";
+}
+function hideTooltip() {
+  const tooltip = document.querySelectorAll(".tooltip");
+  tooltip.style.display = "none";
+}  
+*/
 
 export function displayAllTasks() {
   let header = document.querySelector('.todo-list-header');
