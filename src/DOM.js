@@ -39,8 +39,6 @@ export function displayTodos() {
     })
     newTodo.appendChild(checkbox);
 
-    //addTooltip('tooltip');
-
     todoList.appendChild(newTodo);
     newTodo.addEventListener('click', () => {
       newTodo.classList.toggle('cross-off');
@@ -57,25 +55,7 @@ export function displayTodos() {
     
   }
 }
-/*
-function addTooltip(name) {
-  let name = document.createElement('span');
-  name.textContent = 'This is my tooltip';
-  name.classList.add('tooltip');
-  newTodo.addEventListener("mouseover", showTooltip);
-  newTodo.addEventListener("mouseout", hideTooltip);
-  newTodo.appendChild(tooltip);
-}
 
-function showTooltip() {
-  const tooltip = document.querySelectorAll(".tooltip");
-  tooltip.style.display = "block";
-}
-function hideTooltip() {
-  const tooltip = document.querySelectorAll(".tooltip");
-  tooltip.style.display = "none";
-}  
-*/
 
 export function displayAllTasks() {
   let header = document.querySelector('.todo-list-header');
@@ -83,17 +63,52 @@ export function displayAllTasks() {
   displayTodos();
 }
 
+const todayArray = [];
+
 export function displayTodaysTasks() {
   let header = document.querySelector('.todo-list-header');
   header.textContent = 'Today';
-  /*for (let i in todoArray) {
-    if (todoArray[i].date == todoArray.getDate()) {
+  const date = new Date();
 
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  // This arrangement can be altered based on how we want the date's format to appear.
+  let currentDate = `${year}-0${month}-${day}`;
+  console.log(currentDate); // "17-6-2022"
+    for (let i in todoArray) {
+      if (todoArray[i].date == currentDate) {
+        todayArray.push(todoArray[i]);
+      }
     }
-  }*/
+
+  todoList.innerHTML = '';
+  for (let i in todayArray) {
+    let newTodo = document.createElement('div');
+    newTodo.textContent = `${todayArray[i].title}`;
+    let checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.addEventListener('click', () => {
+      newTodo.remove();
+      todoArray.splice(i, 1);
+      displayTodos();
+      console.log(todoArray);
+    })
+    newTodo.appendChild(checkbox);
+    todoList.appendChild(newTodo);
+  }
+  
+  
+  console.log(todayArray);
 }
 
 export function displaythisWeeksTasks() {
   let header = document.querySelector('.todo-list-header');
   header.textContent = 'This Weeks Tasks';
 }
+
+const addProjectsButton = document.querySelector('.plus');
+addProjectsButton.addEventListener('click', () => {
+  alert()
+})

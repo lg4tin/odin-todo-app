@@ -14,6 +14,12 @@ closeButton.addEventListener('click', () => {
   modal.close();
 })
 
+const addProjectsButton = document.querySelector('.plus');
+addProjectsButton.addEventListener('click', () => {
+  let newProject = prompt('New Project');
+  
+})
+
 const submitButton = document.querySelector('.submit-button');
 //submitButton.addEventListener('click', displayTodos);
 submitButton.addEventListener('click', addTodoToArray);
@@ -28,4 +34,6 @@ const thisWeekButton = document.querySelector('.this-week');
 thisWeekButton.addEventListener('click', displaythisWeeksTasks);
 
 ////////////////////////////////
+
+
 
