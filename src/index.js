@@ -27,3 +27,5 @@ todayButton.addEventListener('click', displayTodaysTasks);
 const thisWeekButton = document.querySelector('.this-week');
 thisWeekButton.addEventListener('click', displaythisWeeksTasks);
 
+////////////////////////////////
+
