@@ -1,6 +1,8 @@
 import { todoArray } from "./index.js";
 
-const todoList = document.querySelector('.todo-list');
+let header = document.querySelector('.todo-list-header');
+
+export const todoList = document.querySelector('.todo-list');
 
 class Todo {
   constructor(title, description, date, priority, project) {
@@ -19,7 +21,7 @@ const priority = document.querySelector('#priority');
 const project = document.querySelector('#project');
 
 export function addTodoToArray() {
-  todoArray.push(new Todo(title.value, des.value, date.value, priority.value, project.value));
+  todoArray.push(new Todo(title.value, des.value, date.value, priority.value, project.value = header.textContent));
   displayTodos();
   console.log(todoArray);
 }
@@ -43,16 +45,6 @@ export function displayTodos() {
     newTodo.addEventListener('click', () => {
       newTodo.classList.toggle('cross-off');
     });
-
-    newTodo.addEventListener('click', () => {
-      const description = document.querySelector('.done');
-      document.querySelector('#one').textContent = 'Title: ' + todoArray[i].title;
-      document.querySelector('#two').textContent = 'Description: ' + todoArray[i].description;
-      document.querySelector('#three').textContent = 'Date: ' + todoArray[i].date;
-      document.querySelector('#four').textContent = 'Priority: ' + todoArray[i].priority;
-      document.querySelector('#five').textContent = 'Project: ' + todoArray[i].project;
-    })
-    
   }
 }
 
@@ -102,13 +94,3 @@ export function displayTodaysTasks() {
   
   console.log(todayArray);
 }
-
-export function displaythisWeeksTasks() {
-  let header = document.querySelector('.todo-list-header');
-  header.textContent = 'This Weeks Tasks';
-}
-
-const addProjectsButton = document.querySelector('.plus');
-addProjectsButton.addEventListener('click', () => {
-  alert()
-})
