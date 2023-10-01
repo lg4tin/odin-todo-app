@@ -66,6 +66,8 @@ export function displayTodaysTasks() {
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
 
+  todayArray = [];
+
   // This arrangement can be altered based on how we want the date's format to appear.
   let currentDate = `${year}-0${month}-${day}`;
   console.log(currentDate); // "17-6-2022"

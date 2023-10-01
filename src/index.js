@@ -61,4 +61,5 @@ function displayProject(name) {
       todoList.appendChild(newTodo);
     }
   }
+  displayProject(name);
 }
