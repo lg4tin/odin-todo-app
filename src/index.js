@@ -21,9 +21,9 @@ function displayTodos(x) {
   content.textContent = '';
   title.textContent = TodoApp.projectsArray[x].title;
 
-  for (let i in TodoApp.projectsArray[x]) {
+  for (let i in TodoApp.projectsArray[x].projectArray) {
     let div = document.createElement('div');
-    div.textContent = TodoApp.projectsArray[x].title;
+    div.textContent = TodoApp.projectsArray[x].projectArray[i].title;
 
     let button = document.createElement('button');
     button.textContent = 'Delete';
@@ -35,7 +35,7 @@ function displayTodos(x) {
     let desBtn = document.createElement('button');
     desBtn.textContent = 'Description';
     desBtn.addEventListener('click', () => {
-      TodoApp.projectsArray[x][i].showDescription();
+      TodoApp.projectsArray[x].projectArray[i].showDescription();
     })
 
     div.appendChild(desBtn);
@@ -90,7 +90,7 @@ const TodoApp = (() => {
 
   function addTodo(a = prompt('hi'),b = prompt('hi'),c = prompt('hi'),d = prompt('hi')) {
     let x = new Todo(a,b,c,d);
-    todoArray.push(x);
+    todoArray.projectArray.push(x);
   }
 
   function removeTodo(i) {
