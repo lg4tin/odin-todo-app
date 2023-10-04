@@ -16,7 +16,8 @@ highPriority.addEventListener('click', () => {
   title.textContent = 'High Priority';
 })
 ideas.addEventListener('click', () => {
-  title.textContent = 'Ideas'
+  title.textContent = 'Ideas';
+  displayTodos(0);
 })
 
 const todoBtn = document.querySelector('.add-todo-btn');
@@ -49,8 +50,6 @@ function displayTodos(x) {
     let desBtn = document.createElement('button');
     desBtn.textContent = 'Description';
     desBtn.addEventListener('click', () => {
-      //TodoApp.projectsArray[x].projectArray[i].showDescription();
-      
       let popup = document.createElement('div');
       popup.textContent = `Title: ${TodoApp.projectsArray[x].projectArray[i].title}, Description: ${TodoApp.projectsArray[x].projectArray[i].description}, 
       Date: ${TodoApp.projectsArray[x].projectArray[i].date}, 
@@ -180,8 +179,8 @@ class Project {
     this.projectArray = [];
   } 
 
-  addTodoToProject(x) {
-     let y = new Todo(x, x, x, x);
+  addTodoToProject(a = prompt('Title'),b = prompt('Description'),c = prompt('Date'),d = prompt('Priority')) {
+     let y = new Todo(a, b, c, d);
      this.projectArray.push(y);
   }
 

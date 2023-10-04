@@ -11,6 +11,15 @@ header {
   padding: 10px 55px;
 }
 
+button {
+  cursor: pointer;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+}
+
 button[data-open-modal] {
   color: white;
   border: none;
