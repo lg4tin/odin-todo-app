@@ -14,7 +14,7 @@
     </div>
     
     <div class="header-right">
-      <button data-open-modal>+</button>
+      <button data-open-modal class="add-todo-btn">+</button>
       <div>Todo List</div>
     </div>
   </header>
@@ -47,30 +47,24 @@
     <div class="sidebar">
       <div class="all-tasks">
         <img src="../star-check-outline.svg" alt="">
-        <div>All Tasks</div>
+        <div id="ideas">Ideas</div>
       </div>
       <div class="today">
         <img src="../clock-time-two-outline.svg" alt="">
-        <div>Today</div></div>
+        <div id="today">Today</div></div>
       <div class="this-week">
         <img src="../message-outline.svg" alt="">
-        <div>This Week</div>
+        <div id="high-priority">High Priority</div>
       </div>
       <div class="add-projects">
-        <button class="plus">+</button>
+        <button class="add-project">+</button>
         <div>Add Projects</div>
       </div>
+      <div class="new-projects"></div>
     </div>
     <div class="todo-list-container">
-      <h1 class="todo-list-header">All Tasks</h1>
-      <div class="todo-list"></div>
-      <div class="done">
-        <p id="one"></p>
-        <p id="two"></p>
-        <p id="three"></p>
-        <p id="four"></p>
-        <p id="five"></p>
-      </div>
+      <h1 class="title">All Tasks</h1>
+      <div class="content"></div>
     </div>
   </div>
   
