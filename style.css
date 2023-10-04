@@ -87,7 +87,7 @@ dialog div {
   flex-direction: column;
 }
 
-.plus {
+.add-project{
   background-color: grey;
   width: 30px;
   border: none;
@@ -95,3 +95,7 @@ dialog div {
   padding-bottom: 5px;
 }
 
+.new-projects {
+  display: flex;
+  flex-direction: column;
+}

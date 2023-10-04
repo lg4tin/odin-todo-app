@@ -1,3 +1,183 @@
+
+
+const content = document.querySelector('.content');
+const title = document.querySelector('.title');
+const addProjectBtn = document.querySelector('.add-project')
+const projectsDisplay = document.querySelector('.projects-display');
+const newProjects = document.querySelector('.new-projects');
+
+const todoBtn = document.querySelector('.add-todo-btn');
+todoBtn.addEventListener('click', () => {
+  TodoApp.addTodo();
+  displayTodos(0)
+})
+
+addProjectBtn.addEventListener('click', () => {
+  TodoApp.addProject();
+  displayProjects();
+})
+
+function displayTodos(x) {
+  content.textContent = '';
+  title.textContent = TodoApp.projectsArray[x].title;
+
+  for (let i in TodoApp.projectsArray[x]) {
+    let div = document.createElement('div');
+    div.textContent = TodoApp.projectsArray[x][i].title;
+
+    let button = document.createElement('button');
+    button.textContent = 'Delete';
+    button.addEventListener('click', () => {
+      TodoApp.removeTodo(i);
+      div.remove();
+    });
+
+    let desBtn = document.createElement('button');
+    desBtn.textContent = 'Description';
+    desBtn.addEventListener('click', () => {
+      TodoApp.projectsArray[x][i].showDescription();
+    })
+
+    div.appendChild(desBtn);
+
+    div.appendChild(button);
+    
+    content.appendChild(div);
+  }
+}
+
+function displayProjects() {
+  newProjects.textContent = '';
+  for (let i = 3; i < TodoApp.projectsArray.length; i++) {
+
+    let div = document.createElement('div');
+    div.textContent = TodoApp.projectsArray[i].title;
+
+    let button = document.createElement('button');
+    button.textContent = 'Delete';
+    button.addEventListener('click', () => {
+      TodoApp.removeProject(i);
+      div.remove();
+    });
+
+    let addButton = document.createElement('button');
+    addButton.textContent = 'Add Todo';
+    addButton.addEventListener('click', () => {
+      TodoApp.projectsArray[i].addTodoToProject(x = prompt('hi'))
+    })
+
+    div.addEventListener('click', () => {
+      displayTodos(i);
+    })
+
+    div.appendChild(button);
+    div.appendChild(addButton);
+    
+    newProjects.appendChild(div);
+  }
+}
+
+///////////////////
+
+const TodoApp = (() => {
+  const todoArray = [];
+
+  const todayArray = [];
+
+  const highPriority = [];
+
+  const projectsArray = [todoArray, todayArray, highPriority];
+
+  function addTodo(a = prompt('hi'),b = prompt('hi'),c = prompt('hi'),d = prompt('hi')) {
+    let x = new Todo(a,b,c,d);
+    todoArray.push(x);
+  }
+
+  function removeTodo(i) {
+    return todoArray.splice(i, 1);
+  }
+
+  function addProject(a = prompt('hi')) {
+    let x = new Project(a);
+    projectsArray.push(x);
+  }
+
+  function removeProject(i) {
+    return projectsArray.splice(i, 1);
+  }
+
+  return {
+     todoArray,
+     todayArray,
+     highPriority,
+     projectsArray,
+     addProject,
+     addTodo,
+     removeTodo,
+     removeProject
+  }
+})();
+
+class Todo {
+  constructor(title, description, date, priority) {
+     this.title = title;
+     this.description = description;
+     this.date = date;
+     this.priority = priority;
+  }
+
+  showDescription() {
+     alert(this.description);
+     alert(this.title);
+     alert(this.date);
+     alert(this.priority);
+  }
+}
+
+class Project {
+  constructor(title) {
+    this.title = title;
+    this.projectArray = [];
+  } 
+
+  addTodoToProject(x) {
+     let y = new Todo(x, x, x, x);
+     this.projectArray.push(y);
+  }
+
+  displayProject() {
+     for (let i in this.projectArray) {
+        console.log(this.projectArray[i]);
+     }
+  }
+
+  removeTodoFromProject(i) {
+    return this.projectArray.splice(i, 1);
+  }
+}
+
+function displayTodaysTodos() {
+  for (let i in todoArray) {
+     if (todoArray[i].date == 29) {
+        todayArray.push(todoArray[i]);
+     }
+  }
+
+  console.log(todayArray);
+}
+
+function displayHighPriority() {
+  for (let i in todoArray) {
+     if (todoArray[i].priority == 3) {
+        highPriority.push(todoArray[i]);
+     }
+  }
+
+  console.log(highPriority)
+}
+
+
+/*
 import { addTodoToArray, displayAllTasks, displayTodaysTasks, displaythisWeeksTasks,todoList } from './DOM.js';
 
 export const todoArray = [];
@@ -63,3 +243,4 @@ function displayProject(name) {
   }
   displayProject(name);
 }
+*/
