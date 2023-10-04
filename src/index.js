@@ -80,7 +80,10 @@ function displayProjects() {
 ///////////////////
 
 const TodoApp = (() => {
-  const todoArray = [];
+  const todoArray = {
+    title: 'Todo',
+    projectArray: []
+  };
 
   const todayArray = [];
 
@@ -94,7 +97,7 @@ const TodoApp = (() => {
   }
 
   function removeTodo(i) {
-    return todoArray.splice(i, 1);
+    return todoArray.projectArray.splice(i, 1);
   }
 
   function addProject(a = prompt('hi')) {
