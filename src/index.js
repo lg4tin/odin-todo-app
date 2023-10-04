@@ -5,6 +5,19 @@ const title = document.querySelector('.title');
 const addProjectBtn = document.querySelector('.add-project')
 const projectsDisplay = document.querySelector('.projects-display');
 const newProjects = document.querySelector('.new-projects');
+const today = document.querySelector('#today');
+const highPriority = document.querySelector('#high-priority');
+const ideas = document.querySelector('#ideas');
+today.addEventListener('click', () => {
+  title.textContent = 'Today';
+  displayTodos(1);
+})
+highPriority.addEventListener('click', () => {
+  title.textContent = 'High Priority';
+})
+ideas.addEventListener('click', () => {
+  title.textContent = 'Ideas'
+})
 
 const todoBtn = document.querySelector('.add-todo-btn');
 todoBtn.addEventListener('click', () => {
@@ -30,13 +43,31 @@ function displayTodos(x) {
     button.addEventListener('click', () => {
       TodoApp.removeTodo(i);
       div.remove();
+      return TodoApp.projectsArray[x].projectArray.splice(i, 1);
     });
 
     let desBtn = document.createElement('button');
     desBtn.textContent = 'Description';
     desBtn.addEventListener('click', () => {
-      TodoApp.projectsArray[x].projectArray[i].showDescription();
-    })
+      //TodoApp.projectsArray[x].projectArray[i].showDescription();
+      
+      let popup = document.createElement('div');
+      popup.textContent = `Title: ${TodoApp.projectsArray[x].projectArray[i].title}, Description: ${TodoApp.projectsArray[x].projectArray[i].description}, 
+      Date: ${TodoApp.projectsArray[x].projectArray[i].date}, 
+      Priority: ${TodoApp.projectsArray[x].projectArray[i].priority}`;
+
+      let delBtn = document.createElement('button');
+      delBtn.textContent = 'Close';
+      delBtn.addEventListener('click', () => {
+        popup.remove();
+      })
+      popup.appendChild(delBtn);
+      div.appendChild(popup);
+      
+      
+      
+      
+    }, {once: false});
 
     div.appendChild(desBtn);
 
@@ -85,13 +116,19 @@ const TodoApp = (() => {
     projectArray: []
   };
 
-  const todayArray = [];
+  const todayArray = {
+    title: 'Today',
+    projectArray: []
+  };
 
-  const highPriority = [];
+  const highPriority = {
+    title: 'High Priority',
+    projectArray: []
+  };
 
   const projectsArray = [todoArray, todayArray, highPriority];
 
-  function addTodo(a = prompt('hi'),b = prompt('hi'),c = prompt('hi'),d = prompt('hi')) {
+  function addTodo(a = prompt('Title'),b = prompt('Description'),c = prompt('Date'),d = prompt('Priority')) {
     let x = new Todo(a,b,c,d);
     todoArray.projectArray.push(x);
   }
@@ -100,7 +137,7 @@ const TodoApp = (() => {
     return todoArray.projectArray.splice(i, 1);
   }
 
-  function addProject(a = prompt('hi')) {
+  function addProject(a = prompt('New Project:')) {
     let x = new Project(a);
     projectsArray.push(x);
   }
@@ -179,12 +216,7 @@ function displayHighPriority() {
   console.log(highPriority)
 }
 
-
 /*
-import { addTodoToArray, displayAllTasks, displayTodaysTasks, displaythisWeeksTasks,todoList } from './DOM.js';
-
-export const todoArray = [];
-
 const openButton = document.querySelector('[data-open-modal]');
 const closeButton = document.querySelector('[data-close-modal]');
 export const modal = document.querySelector('[data-modal]');
@@ -196,6 +228,11 @@ openButton.addEventListener('click', () => {
 closeButton.addEventListener('click', () => {
   modal.close();
 })
+import { addTodoToArray, displayAllTasks, displayTodaysTasks, displaythisWeeksTasks,todoList } from './DOM.js';
+
+export const todoArray = [];
+
+
 
 const addProjectsButton = document.querySelector('.plus');
 addProjectsButton.addEventListener('click', () => {
@@ -212,6 +249,18 @@ addProjectsButton.addEventListener('click', () => {
     displayProject(pro);
   });
   sidebar.appendChild(div);
+})
+
+const openButton = document.querySelector('[data-open-modal]');
+const closeButton = document.querySelector('[data-close-modal]');
+export const modal = document.querySelector('[data-modal]');
+
+openButton.addEventListener('click', () => {
+  modal.showModal();
+})
+
+closeButton.addEventListener('click', () => {
+  modal.close();
 })
 
 const submitButton = document.querySelector('.submit-button');

@@ -21,7 +21,7 @@ const priority = document.querySelector('#priority');
 const project = document.querySelector('#project');
 
 export function addTodoToArray() {
-  todoArray.push(new Todo(title.value, des.value, date.value, priority.value, project.value = header.textContent));
+  todoArray.projectArray.push(new Todo(title.value, des.value, date.value, priority.value, project.value = header.textContent));
   displayTodos();
   console.log(todoArray);
 }
