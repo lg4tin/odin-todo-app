@@ -38,6 +38,7 @@ function displayTodos(x) {
   for (let i in TodoApp.projectsArray[x].projectArray) {
     let div = document.createElement('div');
     div.textContent = TodoApp.projectsArray[x].projectArray[i].title;
+    div.contentEditable = true;
 
     let button = document.createElement('button');
     button.textContent = 'Delete';
